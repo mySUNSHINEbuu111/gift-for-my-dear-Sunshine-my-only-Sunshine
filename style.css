@@ -1,0 +1,397 @@
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --bg-deep:    #030712;
+  --bg-mid:     #081229;
+  --bg-soft:    #0B1026;
+
+  --star-white: #FFFFFF;
+  --star-blue:  #A9C7FF;
+  --star-gold:  #F4C430;
+
+  --accent-1:   #FFD166;
+  --accent-2:   #F4C430;
+
+  --text-main:  #F4F6FB;
+  --text-soft:  #AEB6C9;
+
+  --display-font: 'Cormorant Garamond', serif;
+  --hand-font:    'Parisienne', cursive;
+  --ui-font:      'Jost', sans-serif;
+
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--ui-font);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+::selection { background: rgba(244, 196, 48, 0.35); }
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.1s var(--ease-cinematic);
+}
+
+#loading-screen.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#loading-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.loading-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 640px;
+}
+
+.typing-line {
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.75rem);
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+  min-height: 2.4em;
+}
+
+.caret {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent-1);
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.loading-progress {
+  margin-top: 28px;
+  font-family: var(--ui-font);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  color: var(--accent-1);
+}
+
+/* Flash transition between loading and universe reveal */
+#flash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#flash-overlay.flash {
+  animation: flashBurst 0.7s ease-out forwards;
+}
+
+@keyframes flashBurst {
+  0%   { opacity: 0; }
+  12%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ============================================================
+   PERSISTENT UNIVERSE CANVAS
+   ============================================================ */
+#universe-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at 50% 20%, var(--bg-mid) 0%, var(--bg-soft) 45%, var(--bg-deep) 100%);
+}
+
+/* ============================================================
+   SCROLL CONTENT
+   ============================================================ */
+#content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Intro chapter ---- */
+.chapter--intro {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.chapter-eyebrow {
+  font-family: var(--ui-font);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--text-soft);
+  margin: 0 0 18px;
+}
+
+.chapter-title {
+  font-family: var(--display-font);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 8vw, 5.5rem);
+  margin: 0;
+  letter-spacing: 0.01em;
+  background: linear-gradient(180deg, #ffffff 0%, var(--star-blue) 60%, var(--accent-1) 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 60px rgba(169, 199, 255, 0.25);
+}
+
+.chapter-sub {
+  font-family: var(--display-font);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-soft);
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  margin: 22px 0 0;
+}
+
+.scroll-hint {
+  margin-top: 64px;
+  width: 22px;
+  height: 36px;
+  border: 1px solid rgba(244, 246, 251, 0.35);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-hint span {
+  width: 3px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent-1);
+  animation: scrollDrop 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollDrop {
+  0%   { transform: translateY(0); opacity: 1; }
+  70%  { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+/* ============================================================
+   MEMORY SECTIONS
+   ============================================================ */
+.memory {
+  position: relative;
+  min-height: 190vh;           /* generous room = calm, unhurried pacing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(24px, 8vw, 96px);   /* guaranteed breathing room on both sides */
+  box-sizing: border-box;
+}
+
+.memory-figure {
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  will-change: transform, opacity, filter;
+  opacity: 0;
+  max-width: 100%;
+}
+
+/* The frame's size is capped by BOTH viewport width and viewport height,
+   so the image + caption always fits inside the 100vh sticky stage —
+   this is what previously let tall, narrow-viewport frames overflow and
+   get stuck mid-animation (their bounding box never crossed the
+   intersection threshold because most of it sat outside the viewport). */
+.memory-frame {
+  position: relative;
+  width: min(52vw, 44vh, 440px);
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+}
+
+.memory-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.02) contrast(1.02);
+}
+
+/* soft glass reflection + glow, sits above the image */
+.frame-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 30%),
+    radial-gradient(circle at 50% 110%, rgba(244, 196, 48, 0.18), transparent 60%);
+  box-shadow: 0 0 90px 10px rgba(244, 209, 102, 0.12);
+}
+
+.memory-caption {
+  font-family: var(--hand-font);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--accent-1);
+  line-height: 1.35;
+  margin-top: 26px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.2s var(--ease-cinematic) 0.4s, transform 1.2s var(--ease-cinematic) 0.4s;
+}
+
+.memory-figure.in-view .memory-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Entrance base state (per-type start position) ---- */
+.memory-figure { transition: opacity 2.4s var(--ease-cinematic), transform 2.4s var(--ease-cinematic), filter 2.4s var(--ease-cinematic); }
+
+.memory[data-enter="left"]      .memory-figure { transform: translateX(-24vw) rotate(-2deg); }
+.memory[data-enter="right"]     .memory-figure { transform: translateX(24vw) rotate(2deg); }
+.memory[data-enter="zoom"]      .memory-figure { transform: scale(0.4) translateZ(0); filter: blur(6px); }
+.memory[data-enter="particles"] .memory-figure { transform: scale(0.97); filter: blur(14px); }
+.memory[data-enter="diagonal"]  .memory-figure { transform: translate(-18vw, 14vh) scale(0.82); }
+.memory[data-enter="rotate"]    .memory-figure { transform: rotate(-9deg) scale(0.92); }
+
+.memory-figure.in-view {
+  opacity: 1;
+  transform: translate(0, 0) scale(1) rotate(0deg);
+  filter: blur(0px);
+}
+
+/* Dissolving out — image lets go, becomes light */
+.memory-figure.leaving {
+  transition: opacity 1.6s var(--ease-cinematic), transform 1.6s var(--ease-cinematic), filter 1.6s var(--ease-cinematic);
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(10px) brightness(1.3);
+}
+
+/* ============================================================
+   FINALE
+   ============================================================ */
+.finale {
+  position: relative;
+  height: 220vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finale-text {
+  position: sticky;
+  top: 40vh;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.finale-message {
+  font-family: var(--display-font);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 3.4vw, 2.4rem);
+  color: var(--text-main);
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 40px rgba(244, 196, 48, 0.25);
+  transition: opacity 2.6s var(--ease-cinematic), transform 2.6s var(--ease-cinematic);
+  transform: translateY(14px);
+}
+
+.finale-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  .memory-stage { padding: 0 20px; }
+  .memory-frame { width: min(74vw, 48vh, 340px); aspect-ratio: 3 / 4; }
+  .memory { min-height: 170vh; }
+  .finale { height: 190vh; }
+  .memory[data-enter="left"]     .memory-figure { transform: translateX(-60vw) rotate(-2deg); }
+  .memory[data-enter="right"]    .memory-figure { transform: translateX(60vw) rotate(2deg); }
+  .memory[data-enter="diagonal"] .memory-figure { transform: translate(-40vw, 12vh) scale(0.82); }
+}
+
+/* ============================================================
+   ACCESSIBILITY — reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html, body { scroll-behavior: auto; }
+
+  .memory-figure,
+  .memory-caption,
+  .finale-message,
+  #loading-screen {
+    transition-duration: 0.4s !important;
+  }
+
+  .memory[data-enter] .memory-figure {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .caret, .scroll-hint span { animation: none; }
+}
+
+
+
+
+
