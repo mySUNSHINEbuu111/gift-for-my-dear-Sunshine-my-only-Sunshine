@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Among the Stars — A Story of Us</title>
+<meta name="description" content="A cinematic journey through memories, floating in space.">
+
+<!-- Display & handwriting typefaces, loaded once, used with restraint -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Parisienne&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SECTION 1 — LOADING SCREEN                                    -->
+<!-- ============================================================ -->
+<div id="loading-screen" aria-hidden="false">
+  <div class="loading-inner">
+    <p id="typing-line" class="typing-line"><span id="typing-text"></span><span class="caret">|</span></p>
+    <div class="loading-progress">
+      <span id="loading-percent">0%</span>
+    </div>
+  </div>
+  <canvas id="loading-stars"></canvas>
+</div>
+
+<div id="flash-overlay" aria-hidden="true"></div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2 — PERSISTENT UNIVERSE BACKGROUND                    -->
+<!-- ============================================================ -->
+<canvas id="universe-canvas" aria-hidden="true"></canvas>
+
+<!-- ============================================================ -->
+<!-- SCROLLABLE CONTENT — FLOWS ABOVE THE UNIVERSE                 -->
+<!-- ============================================================ -->
+<main id="content">
+
+  <!-- Opening chapter: a calm drift before the first memory -->
+  <section class="chapter chapter--intro" aria-hidden="true">
+    <p class="chapter-eyebrow">a story, told in light</p>
+    <h1 class="chapter-title">Among the Stars</h1>
+    <p class="chapter-sub">Scroll gently. We're just getting started.</p>
+    <div class="scroll-hint">
+      <span></span>
+    </div>
+  </section>
+
+    <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 4 — fades in through particles                       -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="particles" data-index="4">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="L.jpg" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">small moments, quietly<br>becoming everything</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 1 — slides from the left                             -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="left" data-index="1">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="1.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">the first time i saw<br>the rest of my life</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 2 — slides from the right                            -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="right" data-index="2">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="2.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">a laugh i still hear<br>in the quiet</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 3 — zooms forward from deep space                    -->
+  <!-- ---------------------------------------------------------- 
+  <section class="memory" data-enter="zoom" data-index="3">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="images/photo3.jpg" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">the evening that felt<br>like it paused for us</figcaption>
+      </figure>
+    </div>
+  </section-->
+
+  
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 5 — arrives diagonally                                -->
+  <!-- ---------------------------------------------------------- 
+  <section class="memory" data-enter="diagonal" data-index="5">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="images/photo5.jpg" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">somewhere between<br>chance and choice</figcaption>
+      </figure>
+    </div>
+  </section-->
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 6 — rotates gently before settling                    -->
+  <!-- ---------------------------------------------------------- 
+  <section class="memory" data-enter="rotate" data-index="6">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="images/photo6.jpg" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">still here, still ours,<br>still unfinished</figcaption>
+      </figure>
+    </div>
+  </section-->
+
+
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 3 — slides from the left                             -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="left" data-index="1">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="3.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">the first time i saw<br>the rest of my life</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 4 — slides from the right                            -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="right" data-index="2">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="4.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">a laugh i still hear<br>in the quiet</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 5 — slides from the left                             -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="left" data-index="1">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="5.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">the first time i saw<br>the rest of my life</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 6 — slides from the right                            -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="right" data-index="2">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="6.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">a laugh i still hear<br>in the quiet</figcaption>
+      </figure>
+    </div>
+  </section>
+
+    <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 7 — slides from the left                             -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="left" data-index="1">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="7.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">the first time i saw<br>the rest of my life</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 8 — slides from the right                            -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="right" data-index="2">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="C:\Users\gramk\Downloads\8.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">a laugh i still hear<br>in the quiet</figcaption>
+      </figure>
+    </div>
+  </section>
+
+    <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 9 — slides from the left                             -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="left" data-index="1">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="C:\Users\gramk\Downloads\9.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">the first time i saw<br>the rest of my life</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- MEMORY 10 — slides from the right                            -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="memory" data-enter="right" data-index="2">
+    <div class="memory-stage">
+      <figure class="memory-figure">
+        <div class="memory-frame">
+          <img class="memory-image" src="C:\Users\gramk\Downloads\10.png" alt="A quiet memory of us, held close." loading="lazy">
+          <div class="frame-glow"></div>
+        </div>
+        <figcaption class="memory-caption">a laugh i still hear<br>in the quiet</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- FINALE — the stars gather into a heart                       -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="finale" id="finale">
+    <div class="finale-text">
+      <p id="finale-message" class="finale-message">Thank you for being the most beautiful part of my story.</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
