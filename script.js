@@ -502,3 +502,21 @@
 
 
 
+
+
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+    music.volume = 0.4; // 40% volume
+    music.play();
+
+    // Remove event listeners after first interaction
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("keydown", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+}
+
+document.addEventListener("click", startMusic);
+document.addEventListener("keydown", startMusic);
+document.addEventListener("touchstart", startMusic);
+
